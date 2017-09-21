@@ -10,10 +10,8 @@ programming language. To the programmer, the only accessible direct operation is
 Your calculator should be able to handle addition, subtraction, division, multiplication and exponents. No modulo
 operation (to obtain the remainder for two given operands) too.
 
-https://www.reddit.com/r/dailyprogrammer/comments/6ze9z0/20170911_challenge_331_easy_the_adding_calculator/
+from https://www.reddit.com/r/dailyprogrammer/comments/6ze9z0/20170911_challenge_331_easy_the_adding_calculator/
  */
-
-import com.sun.xml.internal.bind.v2.TODO;
 
 import java.util.Scanner;
 
@@ -29,7 +27,7 @@ public class addcalc {
             firstnum = reader.nextInt();
             System.out.println("Operator: (+,-,*,/) ");
             var = reader.next();
-            while (!"+".equals(var) && !"-".equals(var) && !"*".equals(var) && !"/".equals(var)) {
+            while (!"+".equals(var) && !"-".equals(var) && !"*".equals(var) && !"/".equals(var) && !"^".equals(var)) {
                 System.out.println("Not a correct variable, try again: ");
                 var = reader.next();
             }
@@ -37,23 +35,22 @@ public class addcalc {
             secondnum = reader.nextInt();
 
             System.out.println("Calculating " + firstnum + " " + var + " " + secondnum + ":");
-            if ("+".equals(var)) {
-                result = addcalc.add(firstnum, secondnum);
-            } else if ("-".equals(var)) {
-                result = addcalc.subtract(firstnum, secondnum);
-            }
+            if ("+".equals(var)) result = addcalc.add(firstnum, secondnum);
+            else if ("-".equals(var)) result = addcalc.subtract(firstnum, secondnum);
+            else if ("*".equals(var)) result = addcalc.multiply(firstnum, secondnum);
+            else if ("/".equals(var)) result = addcalc.divide(firstnum, secondnum);
+            else if ("^".equals(var)) result = addcalc.exponent(firstnum, secondnum);
             System.out.println(Integer.toString(result));
 
         }
 
         private static int add(int first, int second) {
-            int result = first + second;
-            return result;
+            return first + second;
         }
         private static int subtract(int first, int second) {
             int result = 0;
             if (second < 10) {
-                //TODO how
+                //TODO this
             }
             return result;
         }
@@ -62,6 +59,16 @@ public class addcalc {
             for (int i = 0; i < second; i++) {
                 result += first;
             }
+            return result;
+        }
+        private static int divide(int first, int second) {
+            int result = 0;
+            //TODO this
+            return result;
+        }
+        private static int exponent(int first, int second) {
+            int result = 0;
+            //TODO this
             return result;
         }
     }
