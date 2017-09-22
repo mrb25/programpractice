@@ -14,6 +14,8 @@ from https://www.reddit.com/r/dailyprogrammer/comments/6ze9z0/20170911_challenge
  */
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.function.IntBinaryOperator;
 
 public class addcalc {
 
@@ -48,23 +50,28 @@ public class addcalc {
             return first + second;
         }
         private static int subtract(int first, int second) {
-            int result = 0;
-            if (second < 10) {
-                //TODO this
-            }
-            return result;
+            second = addcalc.negate(second);
+            return first + second;
         }
         private static int multiply(int first, int second) {
             int result = 0;
+            if (first == 0 || second == 0) return 0;
             for (int i = 0; i < second; i++) {
                 result += first;
             }
             return result;
         }
-        private static int divide(int first, int second) {
-            int result = 0;
-            //TODO this
-            return result;
+        private static int divide(int first, int second) {  //Just int division
+            int result, remainder, i;
+            if (second == 0) throw new RuntimeException("Divide by 0 error");
+            if (Math.abs(first) < Math.abs(second)) throw new RuntimeException("Non-int answer");
+            i = 1;
+            remainder = addcalc.subtract(first, second);
+            while (remainder > 0) {
+                i++;
+                remainder = addcalc.subtract(remainder, second);
+            }
+            return i;
         }
         private static int exponent(int first, int second) {
             int result = 0;
@@ -74,5 +81,10 @@ public class addcalc {
                 result = addcalc.multiply(result, first);
             }
             return result;
+        }
+        private static int negate(int num) {
+            int low = -100000;  //Assume that user will not enter anything larger than 100000
+            while (low + num != 0) low++;
+            return low;
         }
     }
