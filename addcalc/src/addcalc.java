@@ -68,7 +68,11 @@ public class addcalc {
         }
         private static int exponent(int first, int second) {
             int result = 0;
-            //TODO this
+            if (second == 1) result = first;
+            if (second > 1) result = addcalc.multiply(first, first);
+            for (int i = 2; i < second; i++) {
+                result = addcalc.multiply(result, first);
+            }
             return result;
         }
     }
