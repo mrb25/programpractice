@@ -26,7 +26,7 @@ public class everestClimb {
 
     public static void main(String[] args) {
         //First get input and place into an ArrayList
-        ArrayList mountains = new ArrayList();
+        ArrayList<Integer> mountains = new ArrayList<>();
         Scanner reader = new Scanner(System.in);
         System.out.println("Input mountain heights separated by spaces");
         String input = reader.nextLine();
@@ -36,6 +36,7 @@ public class everestClimb {
         }
         System.out.println(mountains.toString());
 
-        //Next 
+        //Next
+
     }
 }
