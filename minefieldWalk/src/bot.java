@@ -5,7 +5,7 @@ public class bot {
 
     public bot() {
         ison = false;
-        x_location = 0;
+        x_location = 1;
         y_location = 0;
     }
 
@@ -19,7 +19,10 @@ public class bot {
             togglePower();
             return;
         }
-        if (!ison) return;
+        if (!ison) {
+            System.out.println("Robot is off");
+            return;
+        }
         if (input == 'n') y_location -= 1;
         else if (input == 's') y_location += 1;
         else if (input == 'e') x_location += 1;

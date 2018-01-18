@@ -24,12 +24,14 @@ public class main {
                 }
             }
         }
-        System.out.println(printField(minefield));
         bot robot = new bot();
         Scanner scanner = new Scanner(System.in);
         while (!isFinished) {
             botLocation = robot.getLocation();
-            if (botLocation[1] >= 9) break;  //finishes game when it crosses the line
+            if (botLocation[1] >= 9) {
+                isFinished = true;
+                break;  //finishes game when it crosses the bottom X line
+            }
             minefield[botLocation[0]][botLocation[1]] = 'R';
             System.out.println(printField(minefield));
             System.out.println("Input: ");
